@@ -2,6 +2,7 @@ package com.mani.apps.myservieapp;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -16,9 +17,12 @@ import java.net.URL;
 public class MyService extends Service {
 
     private String urlString;
+    private IBinder iBinder = new MyBinder();
+    private boolean isConnected;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.i("Service","onStart");
         Bundle bundle = intent.getExtras();
         urlString = bundle.getString("url");
 
@@ -32,7 +36,7 @@ public class MyService extends Service {
                         httpURLConnection = (HttpURLConnection) url.openConnection();
                         InputStream inputStream = new BufferedInputStream(httpURLConnection.getInputStream());
                         Log.i("data", inputStream.toString());
-                        stopSelf();
+                        isConnected = true;
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -53,11 +57,28 @@ public class MyService extends Service {
         Log.i("Service","OnDestroy");
     }
 
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        Log.i("Service","onUnbind");
+        return super.onUnbind(intent);
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        Log.i("Service","onBind");
+        return iBinder;
     }
 
+    public class MyBinder extends Binder{
+        MyService getMyService(){
+            return MyService.this;
+        }
+    }
+
+    public boolean getConnectionStatus(){
+        return isConnected;
+    }
 
 }

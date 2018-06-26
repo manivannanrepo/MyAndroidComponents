@@ -1,4 +1,4 @@
-package com.mani.apps.myservieapp;
+package com.mani.apps.myservieapp.service;
 
 import android.os.Bundle;
 import android.os.Handler;

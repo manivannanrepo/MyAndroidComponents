@@ -1,4 +1,4 @@
-package com.mani.apps.myservieapp;
+package com.mani.apps.myservieapp.service;
 
 import android.app.Service;
 import android.content.Intent;
@@ -72,7 +72,7 @@ public class MyService extends Service {
     }
 
     public class MyBinder extends Binder{
-        MyService getMyService(){
+        public MyService getMyService(){
             return MyService.this;
         }
     }

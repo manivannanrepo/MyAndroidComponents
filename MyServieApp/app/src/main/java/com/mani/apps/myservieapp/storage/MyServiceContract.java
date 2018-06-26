@@ -1,4 +1,4 @@
-package com.mani.apps.myservieapp;
+package com.mani.apps.myservieapp.storage;
 
 import android.net.Uri;
 import android.provider.BaseColumns;

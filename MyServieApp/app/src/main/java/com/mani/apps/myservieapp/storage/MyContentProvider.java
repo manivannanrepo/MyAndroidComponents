@@ -1,4 +1,4 @@
-package com.mani.apps.myservieapp;
+package com.mani.apps.myservieapp.storage;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;

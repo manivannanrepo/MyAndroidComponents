@@ -1,4 +1,4 @@
-package com.mani.apps.myservieapp;
+package com.mani.apps.myservieapp.activities;
 
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -17,7 +17,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import static com.mani.apps.myservieapp.MyServiceContract.TodoEntry.CONTENT_URI;
+import com.mani.apps.myservieapp.R;
+import com.mani.apps.myservieapp.service.MyIntentService;
+import com.mani.apps.myservieapp.service.MyResultReceiver;
+import com.mani.apps.myservieapp.service.MyService;
+import com.mani.apps.myservieapp.service.ResultReceiverCallback;
+import com.mani.apps.myservieapp.storage.MyServiceContract;
+import com.mani.apps.myservieapp.storage.MySqliteDBHelper;
+import com.mani.apps.myservieapp.webservice.RetrofitCalls;
+
+import static com.mani.apps.myservieapp.storage.MyServiceContract.TodoEntry.CONTENT_URI;
 
 public class MainActivity extends AppCompatActivity implements ResultReceiverCallback, View.OnClickListener {
     private final String TAG = getClass().getSimpleName();
@@ -93,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements ResultReceiverCal
             cursor.close();
         }
 
-
         serviceConnection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
@@ -110,6 +118,10 @@ public class MainActivity extends AppCompatActivity implements ResultReceiverCal
         };
 
         startService(serviceIntent);
+
+
+        new RetrofitCalls().loadChages();
+
     }
 
     @Override

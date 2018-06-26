@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
@@ -23,11 +23,11 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".MyService" />
-        <service android:name=".MyIntentService" />
+        <service android:name=".service.MyService" />
+        <service android:name=".service.MyIntentService" />
 
         <provider
-            android:name=".MyContentProvider"
+            android:name=".storage.MyContentProvider"
             android:authorities="com.mani.apps" />
 
     </application>

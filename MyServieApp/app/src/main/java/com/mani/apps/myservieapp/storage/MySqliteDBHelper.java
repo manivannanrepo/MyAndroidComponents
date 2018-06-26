@@ -1,11 +1,11 @@
-package com.mani.apps.myservieapp;
+package com.mani.apps.myservieapp.storage;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import static com.mani.apps.myservieapp.MyServiceContract.TodoEntry.TABLE_NAME;
+import static com.mani.apps.myservieapp.storage.MyServiceContract.TodoEntry.TABLE_NAME;
 
 public class MySqliteDBHelper extends SQLiteOpenHelper {
 
@@ -13,7 +13,7 @@ public class MySqliteDBHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
 
 
-    MySqliteDBHelper(Context context) {
+    public MySqliteDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 

@@ -1,4 +1,4 @@
-package com.mani.apps.myservieapp;
+package com.mani.apps.myservieapp.service;
 
 import android.app.IntentService;
 import android.content.Intent;
